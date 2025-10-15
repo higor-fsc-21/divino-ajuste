@@ -36,25 +36,27 @@ export default function Home() {
       </header>
 
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8">
-            {sections.map((section) => {
-              const Icon = section.icon;
-              return (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center space-x-2 py-4 px-2 border-b-2 font-medium text-sm ${
-                    activeSection === section.id
-                      ? "border-pink-500 text-pink-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                  }`}
-                >
-                  <Icon className="h-5 w-5" />
-                  <span>{section.name}</span>
-                </button>
-              );
-            })}
+        <div className="max-w-7xl mx-auto">
+          <div className="overflow-x-auto">
+            <div className="flex space-x-6 sm:space-x-8 px-4 sm:px-6 lg:px-8 min-w-max sm:min-w-0">
+              {sections.map((section) => {
+                const Icon = section.icon;
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`flex items-center space-x-2 py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap ${
+                      activeSection === section.id
+                        ? "border-pink-500 text-pink-600"
+                        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm">{section.name}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </nav>

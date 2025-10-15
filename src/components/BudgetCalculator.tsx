@@ -92,10 +92,10 @@ export default function BudgetCalculator() {
         <div className="inline-flex items-center justify-center p-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mb-4">
           <ShoppingCart className="h-8 w-8 text-white" />
         </div>
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-3">
+        <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-3">
           Simulador de Orçamento
         </h2>
-        <p className="text-gray-600 max-w-md mx-auto leading-relaxed">
+        <p className="text-gray-600 max-w-md mx-auto leading-relaxed text-sm sm:text-base px-4 sm:px-0">
           Descubra quanto custará seu ajuste de forma rápida e transparente.
           Selecione sua peça e o tipo de serviço desejado.
         </p>
@@ -160,9 +160,9 @@ export default function BudgetCalculator() {
       {showServices && selectedClothingType && (
         <div className="space-y-6">
           {/* Header da seção de serviços */}
-          <div className="flex flex-items-center justify-between">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full mb-4">
-              <span className="font-medium">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full">
+              <span className="font-medium text-sm sm:text-base">
                 Serviços para {selectedClothingType.name}
               </span>
             </div>
@@ -171,7 +171,7 @@ export default function BudgetCalculator() {
                 setShowServices(false);
                 setSelectedClothingType(null);
               }}
-              className="text-gray-500 hover:text-pink-600 font-medium transition-colors"
+              className="text-gray-500 hover:text-pink-600 font-medium transition-colors text-sm sm:text-base"
             >
               ← Voltar para tipos de peça
             </button>
@@ -219,10 +219,10 @@ export default function BudgetCalculator() {
             <div className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-4">
               <ShoppingCart className="h-6 w-6 text-white" />
             </div>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
               Seu Orçamento
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base px-4 sm:px-0">
               Revise seus itens e ajuste as quantidades se necessário
             </p>
           </div>
@@ -232,28 +232,86 @@ export default function BudgetCalculator() {
             {budgetItems.map((item, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-white to-green-50 border-2 border-green-100 rounded-2xl p-5 hover:border-green-200 hover:shadow-lg transition-all duration-300"
+                className="bg-gradient-to-r from-white to-green-50 border-2 border-green-100 rounded-2xl p-4 sm:p-5 hover:border-green-200 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
+                {/* Layout para mobile: vertical stack */}
+                <div className="flex flex-col space-y-4 sm:hidden">
+                  {/* Informações do item */}
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-semibold text-sm">
+                        {item.clothingType.charAt(0)}
+                      </span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-gray-900 text-base truncate">
+                        {item.clothingType}
+                      </div>
+                      <div className="text-green-600 font-medium text-sm truncate">
+                        {item.service}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Controles e preço em linha */}
+                  <div className="flex items-center justify-between">
+                    {/* Controles de quantidade */}
+                    <div className="flex items-center space-x-1 bg-white rounded-lg border-2 border-gray-200 p-1">
+                      <button
+                        onClick={() => updateQuantity(index, -1)}
+                        className="p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                      >
+                        <Minus className="h-3 w-3 text-gray-600" />
+                      </button>
+                      <span className="w-6 text-center font-semibold text-gray-900 text-sm">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() => updateQuantity(index, 1)}
+                        className="p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                      >
+                        <Plus className="h-3 w-3 text-gray-600" />
+                      </button>
+                    </div>
+
+                    {/* Preço */}
+                    <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1.5 rounded-lg font-bold text-sm">
+                      R$ {(item.price * item.quantity).toFixed(2)}
+                    </div>
+                  </div>
+
+                  {/* Botão remover */}
+                  <div className="text-center">
+                    <button
+                      onClick={() => removeItem(index)}
+                      className="text-xs text-red-500 hover:text-red-700 font-medium transition-colors"
+                    >
+                      Remover item
+                    </button>
+                  </div>
+                </div>
+
+                {/* Layout para desktop: horizontal */}
+                <div className="hidden sm:flex items-center justify-between">
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-3 mb-2">
                       <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
                         <span className="text-white font-semibold text-sm">
                           {item.clothingType.charAt(0)}
                         </span>
                       </div>
-                      <div>
-                        <div className="font-semibold text-gray-900 text-lg">
+                      <div className="min-w-0">
+                        <div className="font-semibold text-gray-900 text-lg truncate">
                           {item.clothingType}
                         </div>
-                        <div className="text-green-600 font-medium">
+                        <div className="text-green-600 font-medium truncate">
                           {item.service}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-4 flex-shrink-0">
                     {/* Controles de quantidade */}
                     <div className="flex items-center space-x-2 bg-white rounded-xl border-2 border-gray-200 p-1">
                       <button
@@ -292,8 +350,24 @@ export default function BudgetCalculator() {
           </div>
 
           {/* Total e finalização */}
-          <div className="bg-gradient-to-r from-gray-50 to-green-50 border-2 border-green-200 rounded-2xl p-6">
-            <div className="flex justify-between items-center mb-6">
+          <div className="bg-gradient-to-r from-gray-50 to-green-50 border-2 border-green-200 rounded-2xl p-4 sm:p-6">
+            {/* Layout mobile: vertical stack */}
+            <div className="text-center mb-6 sm:hidden">
+              <div className="text-gray-600 text-base mb-1">
+                Total do Orçamento:
+              </div>
+              <div className="text-sm text-gray-500 mb-3">
+                {budgetItems.length}{" "}
+                {budgetItems.length === 1 ? "item" : "itens"} selecionado
+                {budgetItems.length === 1 ? "" : "s"}
+              </div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                R$ {getTotalPrice().toFixed(2)}
+              </div>
+            </div>
+
+            {/* Layout desktop: horizontal */}
+            <div className="hidden sm:flex justify-between items-center mb-6">
               <div>
                 <span className="text-gray-600 text-lg">
                   Total do Orçamento:
@@ -313,10 +387,12 @@ export default function BudgetCalculator() {
 
             <button
               onClick={sendBudgetWhatsApp}
-              className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-4 px-6 rounded-2xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-green-200 flex items-center justify-center space-x-3"
+              className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-green-200 flex items-center justify-center space-x-2 sm:space-x-3"
             >
-              <MessageCircle className="h-5 w-5" />
-              <span className="text-lg">Finalizar Orçamento no WhatsApp</span>
+              <MessageCircle className="hidden sm:flex h-5 w-5 flex-shrink-0" />
+              <span className="text-base sm:text-lg">
+                Finalizar Orçamento no WhatsApp
+              </span>
             </button>
 
             <p className="text-center text-sm text-gray-600 mt-3">
