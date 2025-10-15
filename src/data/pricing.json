@@ -1,0 +1,69 @@
+{
+  "clothingTypes": [
+    {
+      "id": "vestidos",
+      "name": "Vestidos",
+      "services": [
+        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 25.0 },
+        { "id": "barra", "name": "Barra", "price": 15.0 },
+        { "id": "manga", "name": "Ajuste de Manga", "price": 20.0 },
+        { "id": "decote", "name": "Ajuste de Decote", "price": 18.0 }
+      ]
+    },
+    {
+      "id": "calcas",
+      "name": "Calças",
+      "services": [
+        { "id": "barra", "name": "Barra", "price": 12.0 },
+        { "id": "ajuste_cintura", "name": "Ajuste de Cintura", "price": 20.0 },
+        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 25.0 },
+        { "id": "troca_ziper", "name": "Troca de Zíper", "price": 15.0 }
+      ]
+    },
+    {
+      "id": "blusas",
+      "name": "Blusas/Camisas",
+      "services": [
+        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 20.0 },
+        { "id": "manga", "name": "Ajuste de Manga", "price": 18.0 },
+        { "id": "gola", "name": "Ajuste de Gola", "price": 15.0 },
+        { "id": "barra", "name": "Barra", "price": 10.0 }
+      ]
+    },
+    {
+      "id": "saias",
+      "name": "Saias",
+      "services": [
+        { "id": "barra", "name": "Barra", "price": 12.0 },
+        { "id": "ajuste_cintura", "name": "Ajuste de Cintura", "price": 18.0 },
+        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 22.0 },
+        { "id": "troca_ziper", "name": "Troca de Zíper", "price": 15.0 }
+      ]
+    },
+    {
+      "id": "ternos",
+      "name": "Ternos/Blazers",
+      "services": [
+        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 35.0 },
+        { "id": "manga", "name": "Ajuste de Manga", "price": 25.0 },
+        { "id": "barra_calca", "name": "Barra da Calça", "price": 15.0 },
+        { "id": "ajuste_ombro", "name": "Ajuste de Ombro", "price": 30.0 }
+      ]
+    }
+  ],
+  "contact": {
+    "name": "Elione Bento",
+    "email": "elionesilva192@gmail.com",
+    "phone": "+55 84 98107-5777",
+    "whatsapp": "+5584981075777",
+    "instagram": "@divinoajusteatelie"
+  },
+  "location": {
+    "address": "Rua Mira Mangue, 1109c - Planalto, Natal - RN, 59074-856",
+    "coordinates": {
+      "lat": -5.8490647941342955,
+      "lng": -35.2570632240808
+    },
+    "googleMapsUrl": "https://maps.app.goo.gl/uGZNYEqsDjDQvn3RA"
+  }
+}
