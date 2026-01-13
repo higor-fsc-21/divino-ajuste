@@ -4,49 +4,113 @@
       "id": "vestidos",
       "name": "Vestidos",
       "services": [
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 20.0 },
-        { "id": "barra", "name": "Barra", "price": 20.0 },
-        { "id": "manga", "name": "Ajuste de Manga", "price": 25.0 },
-        { "id": "decote", "name": "Ajuste de Decote", "price": 20.0 }
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 20
+        },
+        {
+          "id": "barra",
+          "name": "Barra",
+          "price": 20
+        },
+        {
+          "id": "manga",
+          "name": "Ajuste de Manga",
+          "price": 25
+        },
+        {
+          "id": "decote",
+          "name": "Ajuste de Decote",
+          "price": 20
+        }
       ]
     },
     {
       "id": "vestidos_festa",
       "name": "Vestidos (Festa)",
       "services": [
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 30.0 },
-        { "id": "barra", "name": "Barra", "price": 30.0 },
-        { "id": "manga", "name": "Ajuste de Manga", "price": 35.0 },
-        { "id": "decote", "name": "Ajuste de Decote", "price": 33.0 }
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 30
+        },
+        {
+          "id": "barra",
+          "name": "Barra",
+          "price": 30
+        },
+        {
+          "id": "manga",
+          "name": "Ajuste de Manga",
+          "price": 35
+        },
+        {
+          "id": "decote",
+          "name": "Ajuste de Decote",
+          "price": 33
+        }
       ]
     },
     {
       "id": "vestidos_noiva",
       "name": "Vestidos (Noiva)",
       "services": [
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 40.0 },
-        { "id": "barra", "name": "Barra", "price": 40.0 },
-        { "id": "manga", "name": "Ajuste de Manga", "price": 37.0 },
-        { "id": "decote", "name": "Ajuste de Decote", "price": 40.0 }
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 40
+        },
+        {
+          "id": "barra",
+          "name": "Barra",
+          "price": 40
+        },
+        {
+          "id": "manga",
+          "name": "Ajuste de Manga",
+          "price": 37
+        },
+        {
+          "id": "decote",
+          "name": "Ajuste de Decote",
+          "price": 40
+        }
       ]
     },
     {
       "id": "calcas_shorts_bermudas",
       "name": "Calças / Shorts / Bermudas",
       "services": [
-        { "id": "barra_normal", "name": "Barra (normal)", "price": 20.0 },
-        { "id": "barra_original", "name": "Barra (original)", "price": 25.0 },
-        { "id": "ajuste_cintura", "name": "Ajuste de Cós", "price": 30.0 },
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 25.0 },
+        {
+          "id": "barra_normal",
+          "name": "Barra (normal)",
+          "price": 20
+        },
+        {
+          "id": "barra_original",
+          "name": "Barra (original)",
+          "price": 25
+        },
+        {
+          "id": "ajuste_cintura",
+          "name": "Ajuste de Cós",
+          "price": 30
+        },
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 25
+        },
         {
           "id": "troca_ziper_normal",
           "name": "Troca de Zíper (normal)",
-          "price": 20.0
+          "price": 20
         },
         {
           "id": "troca_ziper_jeans",
           "name": "Troca de Zíper (jeans)",
-          "price": 25.0
+          "price": 25
         }
       ]
     },
@@ -54,31 +118,83 @@
       "id": "blusas",
       "name": "Blusas/Camisas",
       "services": [
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 15.0 },
-        { "id": "manga", "name": "Ajuste de Manga", "price": 20.0 },
-        { "id": "gola", "name": "Ajuste de Gola", "price": 20.0 },
-        { "id": "barra", "name": "Barra", "price": 20.0 }
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 15
+        },
+        {
+          "id": "manga",
+          "name": "Ajuste de Manga",
+          "price": 20
+        },
+        {
+          "id": "gola",
+          "name": "Ajuste de Gola",
+          "price": 20
+        },
+        {
+          "id": "barra",
+          "name": "Barra",
+          "price": 20
+        }
       ]
     },
     {
       "id": "saias",
       "name": "Saias",
       "services": [
-        { "id": "barra", "name": "Barra", "price": 20.0 },
-        { "id": "ajuste_cintura", "name": "Ajuste de Cintura", "price": 25.0 },
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 20.0 },
-        { "id": "troca_ziper", "name": "Troca de Zíper", "price": 20.0 }
+        {
+          "id": "barra",
+          "name": "Barra",
+          "price": 20
+        },
+        {
+          "id": "ajuste_cintura",
+          "name": "Ajuste de Cintura",
+          "price": 25
+        },
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 20
+        },
+        {
+          "id": "troca_ziper",
+          "name": "Troca de Zíper",
+          "price": 20
+        }
       ]
     },
     {
       "id": "ternos",
       "name": "Ternos/Blazers",
       "services": [
-        { "id": "ajuste_lateral", "name": "Ajuste Lateral", "price": 40.0 },
-        { "id": "manga", "name": "Ajuste de Manga", "price": 30.0 },
-        { "id": "barra", "name": "Barra da Calça", "price": 40.0 },
-        { "id": "ajuste_ombro", "name": "Ajuste de Ombro", "price": 40.0 },
-        { "id": "reforma_completa", "name": "Reforma Completa", "price": 100.0 }
+        {
+          "id": "ajuste_lateral",
+          "name": "Ajuste Lateral",
+          "price": 40
+        },
+        {
+          "id": "manga",
+          "name": "Ajuste de Manga",
+          "price": 30
+        },
+        {
+          "id": "barra",
+          "name": "Barra da Calça",
+          "price": 40
+        },
+        {
+          "id": "ajuste_ombro",
+          "name": "Ajuste de Ombro",
+          "price": 40
+        },
+        {
+          "id": "reforma_completa",
+          "name": "Reforma Completa",
+          "price": 100
+        }
       ]
     }
   ],
