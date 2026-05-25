@@ -1,9 +1,13 @@
 "use client";
 
 import { Mail, Phone, User, Clock } from "lucide-react";
-import pricingData from "@/data/pricing.json";
+import { Contact } from "@/types";
 
-export default function ContactInfo() {
+interface Props {
+  contact: Contact;
+}
+
+export default function ContactInfo({ contact }: Props) {
   return (
     <div className="space-y-6">
       <div>
@@ -22,7 +26,7 @@ export default function ContactInfo() {
             <User className="h-5 w-5 text-pink-600" />
             <span className="font-medium text-gray-900">Costureira</span>
           </div>
-          <p className="text-gray-700 ml-8">{pricingData.contact.name}</p>
+          <p className="text-gray-700 ml-8">{contact.name}</p>
         </div>
 
         <div className="bg-gray-50 p-4 rounded-lg">
@@ -31,10 +35,10 @@ export default function ContactInfo() {
             <span className="font-medium text-gray-900">Telefone</span>
           </div>
           <a
-            href={`tel:${pricingData.contact.phone}`}
+            href={`tel:${contact.phone}`}
             className="text-blue-600 hover:text-blue-800 ml-8 transition-colors"
           >
-            {pricingData.contact.phone}
+            {contact.phone}
           </a>
         </div>
 
@@ -44,10 +48,10 @@ export default function ContactInfo() {
             <span className="font-medium text-gray-900">E-mail</span>
           </div>
           <a
-            href={`mailto:${pricingData.contact.email}`}
+            href={`mailto:${contact.email}`}
             className="text-blue-600 hover:text-blue-800 ml-8 transition-colors"
           >
-            {pricingData.contact.email}
+            {contact.email}
           </a>
         </div>
 

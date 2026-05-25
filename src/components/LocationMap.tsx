@@ -1,11 +1,15 @@
 "use client";
 
 import { MapPin, ExternalLink } from "lucide-react";
-import pricingData from "@/data/pricing.json";
+import { Location } from "@/types";
 
-export default function LocationMap() {
+interface Props {
+  location: Location;
+}
+
+export default function LocationMap({ location }: Props) {
   const openGoogleMaps = () => {
-    window.open(pricingData.location.googleMapsUrl, "_blank");
+    window.open(location.googleMapsUrl, "_blank");
   };
 
   return (
@@ -28,7 +32,7 @@ export default function LocationMap() {
           <MapPin className="h-5 w-5 text-pink-600 mt-0.5" />
           <div>
             <p className="font-medium text-gray-900">Endereço</p>
-            <p className="text-gray-600">{pricingData.location.address}</p>
+            <p className="text-gray-600">{location.address}</p>
           </div>
         </div>
       </div>

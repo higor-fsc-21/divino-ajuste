@@ -1,14 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BudgetCalculator from "@/components/BudgetCalculator";
 import LocationMap from "@/components/LocationMap";
 import ContactInfo from "@/components/ContactInfo";
 import SocialLinks from "@/components/SocialLinks";
 import { Scissors, Calculator, MapPin, Phone } from "lucide-react";
+import { PricingData } from "@/types";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("budget");
+  const [pricingData, setPricingData] = useState<PricingData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/pricing")
+      .then((res) => res.json())
+      .then((data) => setPricingData(data))
+      .finally(() => setLoading(false));
+  }, []);
 
   const sections = [
     { id: "budget", name: "Orçamento", icon: Calculator },
@@ -30,7 +40,7 @@ export default function Home() {
                 <p className="text-sm text-gray-600">Ateliê de Costuras</p>
               </div>
             </div>
-            <SocialLinks />
+            {pricingData && <SocialLinks contact={pricingData.contact} />}
           </div>
         </div>
       </header>
@@ -63,9 +73,27 @@ export default function Home() {
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         <div className="bg-white rounded-lg shadow-lg p-6">
-          {activeSection === "budget" && <BudgetCalculator />}
-          {activeSection === "location" && <LocationMap />}
-          {activeSection === "contact" && <ContactInfo />}
+          {loading && (
+            <div className="flex justify-center items-center py-16">
+              <div className="animate-spin rounded-full h-10 w-10 border-4 border-pink-500 border-t-transparent" />
+            </div>
+          )}
+          {!loading && pricingData && (
+            <>
+              {activeSection === "budget" && (
+                <BudgetCalculator
+                  clothingTypes={pricingData.clothingTypes}
+                  contact={pricingData.contact}
+                />
+              )}
+              {activeSection === "location" && (
+                <LocationMap location={pricingData.location} />
+              )}
+              {activeSection === "contact" && (
+                <ContactInfo contact={pricingData.contact} />
+              )}
+            </>
+          )}
         </div>
       </main>
 

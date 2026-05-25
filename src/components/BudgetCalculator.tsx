@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Plus, Minus, ShoppingCart, MessageCircle } from "lucide-react";
-import { ClothingType, BudgetItem } from "@/types";
-import pricingData from "@/data/pricing.json";
+import { ClothingType, Contact, BudgetItem } from "@/types";
 
-export default function BudgetCalculator() {
+interface Props {
+  clothingTypes: ClothingType[];
+  contact: Contact;
+}
+
+export default function BudgetCalculator({ clothingTypes, contact }: Props) {
   const [selectedClothingType, setSelectedClothingType] =
     useState<ClothingType | null>(null);
   const [budgetItems, setBudgetItems] = useState<BudgetItem[]>([]);
@@ -19,7 +23,7 @@ export default function BudgetCalculator() {
   const handleServiceSelect = (
     serviceId: string,
     serviceName: string,
-    price: number
+    price: number,
   ) => {
     if (!selectedClothingType) return;
 
@@ -53,15 +57,15 @@ export default function BudgetCalculator() {
   const getTotalPrice = () => {
     return budgetItems.reduce(
       (total, item) => total + item.price * item.quantity,
-      0
+      0,
     );
   };
 
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent(
-      "Olá! Gostaria de fazer um orçamento para um serviço de costura. Você poderia me ajudar a descrever o tipo de serviço que preciso?"
+      "Olá! Gostaria de fazer um orçamento para um serviço de costura. Você poderia me ajudar a descrever o tipo de serviço que preciso?",
     );
-    const whatsappUrl = `https://wa.me/${pricingData.contact.whatsapp}?text=${message}`;
+    const whatsappUrl = `https://wa.me/${contact.whatsapp}?text=${message}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -79,9 +83,7 @@ export default function BudgetCalculator() {
     message += `Total: R$ ${getTotalPrice().toFixed(2)}\n\n`;
     message += "Quando posso levar as peças?";
 
-    const whatsappUrl = `https://wa.me/${
-      pricingData.contact.whatsapp
-    }?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -110,7 +112,7 @@ export default function BudgetCalculator() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {pricingData.clothingTypes.map((clothingType, index) => (
+            {clothingTypes.map((clothingType, index) => (
               <button
                 key={clothingType.id}
                 onClick={() => handleClothingTypeSelect(clothingType)}

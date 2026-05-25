@@ -1,21 +1,25 @@
 "use client";
 
 import { MessageCircle, Instagram } from "lucide-react";
-import pricingData from "@/data/pricing.json";
+import { Contact } from "@/types";
 
-export default function SocialLinks() {
+interface Props {
+  contact: Contact;
+}
+
+export default function SocialLinks({ contact }: Props) {
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Olá! Gostaria de saber mais sobre os serviços do ateliê."
+      "Olá! Gostaria de saber mais sobre os serviços do ateliê.",
     );
-    const whatsappUrl = `https://wa.me/${pricingData.contact.whatsapp}?text=${message}`;
+    const whatsappUrl = `https://wa.me/${contact.whatsapp}?text=${message}`;
     window.open(whatsappUrl, "_blank");
   };
 
   const openInstagram = () => {
-    const instagramUrl = `https://instagram.com/${pricingData.contact.instagram.replace(
+    const instagramUrl = `https://instagram.com/${contact.instagram.replace(
       "@",
-      ""
+      "",
     )}`;
     window.open(instagramUrl, "_blank");
   };
