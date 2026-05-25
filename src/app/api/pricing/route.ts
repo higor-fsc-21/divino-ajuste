@@ -1,16 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+
+const PRICING_DOC = doc(db, "pricing", "data");
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "src/data/pricing.json");
-    const data = await fs.readFile(filePath, "utf-8");
-    return NextResponse.json(JSON.parse(data));
+    const snapshot = await getDoc(PRICING_DOC);
+    if (!snapshot.exists()) {
+      return NextResponse.json(
+        { error: "Pricing data not found" },
+        { status: 404 },
+      );
+    }
+    return NextResponse.json(snapshot.data());
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to read pricing data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -18,13 +25,12 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const filePath = path.join(process.cwd(), "src/data/pricing.json");
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+    await setDoc(PRICING_DOC, data);
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to update pricing data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
